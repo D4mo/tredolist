@@ -1,2 +1,2 @@
 release:
-	zip -r layout-trello.zip . -x ".*" -x "screenshots/*"
+	zip -r tredolist.zip . -x ".*" -x "screenshots/*"

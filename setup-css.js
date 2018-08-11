@@ -1,7 +1,8 @@
 var cssFile = chrome.extension.getURL('css/layout.css'),
   board = document.getElementById('board'),
   classVertical = 'layout-trello-vertical',
-  classMixed = 'layout-trello-mixed';
+  classMixed = 'layout-trello-mixed',
+  classHorizontalCardLayout = 'layout-trello-horizcards';
 
 function insertCss() {
   if (document.getElementById('layoutcss') === null) {

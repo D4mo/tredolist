@@ -1,12 +1,14 @@
 #board.layout-trello-vertical,
-#board.layout-trello-mixed {
+#board.layout-trello-mixed,
+#board.layout-trello-horizcards {
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
     align-content: flex-start;
 }
 
-#board.layout-trello-vertical {
+#board.layout-trello-vertical,
+#board.layout-trello-horizcards {
     flex-direction: column;
 }
 
@@ -16,11 +18,37 @@
 }
 
 #board.layout-trello-vertical .list-wrapper,
-#board.layout-trello-mixed .list-wrapper {
+#board.layout-trello-mixed .list-wrapper,
+#board.layout-trello-horizcards .list-wrapper {
     margin: 0 0 10px 10px;
     height: auto;
 }
 
+#board.layout-trello-horizcards .list-wrapper {
+    width: calc(100% - 20px);
+}
 #board.layout-trello-mixed .js-list-content {
+}
+
+#board.layout-trello-horizcards .js-list-content {
     max-height: 40vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#board.layout-trello-horizcards .js-list-content > :first-child {
+    flex-basis: calc(100% - 44px);
+}
+
+#board.layout-trello-horizcards .list-wrapper .list-cards {
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#board.layout-trello-horizcards .list-card {
+    margin-right: 8px;
+}
+
+#board.layout-trello-horizcards .list-wrapper .open-card-composer {
 }
