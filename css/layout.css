@@ -50,5 +50,14 @@
     margin-right: 8px;
 }
 
-#board.layout-trello-horizcards .list-wrapper .open-card-composer {
+#board .list-card.done {
+    border-radius: 3px;
+}
+
+#board .list-card.done .badge.complete {
+    display: none;
+}
+
+#board .list-card .badge.hidden {
+    display: none;
 }

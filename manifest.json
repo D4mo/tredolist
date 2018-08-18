@@ -18,8 +18,11 @@
     "tabs",
     "storage"
   ],
+
   "web_accessible_resources": [
-    "css/layout.css"
+    "css/layout.css",
+    "css/theme-bright.css",
+    "css/theme-dark.css"
   ],
   "page_action": {
     "default_title": "Tredolist"

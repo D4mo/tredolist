@@ -1,12 +1,15 @@
-List Layouts for Trello
-=======================
 
-The List Layouts for Trello extension adds a button to your Chrome toolbar allowing you to toggle the Trello board layout from horizontal to grid to vertical by clicking the icon.
+TredoList
+=========
+
+Forked from List Layouts for Trello.
+
+The TredoList extension adds a button to your Chrome toolbar allowing you to toggle the Trello board layout from horizontal to grid to vertical by clicking the icon.
 
 Installation
 ------------
 
-Download and install the extension from here: [Chrome Web Store - List Layouts for Trello](https://chrome.google.com/webstore/detail/list-layouts-for-trello/aldklnbenbdgfgfbflalmlddkkndgnlc)
+Download and install the extension from here: [Chrome Web Store - Tredolist](https://chrome.google.com/webstore/detail/tredolist/...)
 
 Usage
 -----
@@ -20,6 +23,9 @@ Layouts
 
 **Vertical**
 ![Vertical Layout](https://raw.githubusercontent.com/natalieperna/layout-trello/master/screenshots/vertical.png)
+
+**Horizontal Cards**
+This is like Vertical but the cards are in a horizontal layout within a list.
 
 **Horizontal**
 ![Horizontal Layout](https://raw.githubusercontent.com/natalieperna/layout-trello/master/screenshots/horizontal.png)

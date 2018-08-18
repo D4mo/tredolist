@@ -1,0 +1,20 @@
+
+#board .list-card.done-tdl {
+    background-color: #61bd4f !important;
+}
+
+#board .list-card.in-progress-tdl {
+    background-color: #f1ed00;
+}
+
+#board .list-card.canceled-tdl {
+    background-color: #fa6f65;
+}
+
+#board .list-card.done-tdl .list-card-title {
+    color: #fff;
+}
+
+#board .list {
+    background-color: #e2e4e6be
+}
