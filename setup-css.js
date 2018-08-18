@@ -12,14 +12,6 @@ function insertCss(cssFile, id) {
   }
 }
 
-function getParent(node, selector) {
-  for (var p = node && node.parentElement; p; p = p.parentElement) {
-    if (p.matches(selector))
-      return p;
-  }
-  return null;
-}
-
 function catchNodeByClass(className, callback) {
   var nodes = document.getElementsByClassName(className);
   for (var node of nodes) {
@@ -70,7 +62,22 @@ function getStateFromBadgeText(node) {
   }
 }
 
-var States = ['canceled-tdl', 'done-tdl', 'in-progress-tdl'];
+function getStateFromTitle(node) {
+  if (node && node.innerText && node.innerText.match(/\<.*\>/) !== null)
+    return 'waiting-for-tdl';
+  return undefined;
+}
+
+var States = ['canceled-tdl', 'done-tdl', 'waiting-for-tdl', 'in-progress-tdl']; // in order of priority
+
+function getMainState(compoundStates) {
+  for (var st of States) {
+    if (compoundStates.indexOf(st) !== -1) {
+      return st;
+    }
+  }
+  return undefined;
+}
 
 function setState(card, state) {
   for (var st of States) {
@@ -78,20 +85,16 @@ function setState(card, state) {
   }
 }
 
-catchNodeByClass('badges', function(badgesNode) {
-  var badgeTextNodes = badgesNode.querySelectorAll('.badge-text');
+catchNodeByClass('list-card', function(listCardNode) {
+  // Look at badges
+  var badgeTextNodes = listCardNode.querySelectorAll('.badge-text');
   var compoundStates = Array.from(badgeTextNodes).map(function(badgeTextNode) {
     return getStateFromBadgeText(badgeTextNode);
   });
 
-  // Handle priority of states
-  var state = undefined;
-  if (compoundStates.indexOf('canceled-tdl') !== -1)
-    state = 'canceled-tdl';
-  else if (compoundStates.indexOf('done-tdl') !== -1)
-    state = 'done-tdl';
-  else
-    state = compoundStates.find(function(st) { return st !== undefined; });
-  
-  setState(getParent(badgesNode, '.list-card'), state);
+  // Look at title
+  compoundStates.push(getStateFromTitle(listCardNode.querySelector('.list-card-title')));
+
+  // Resolve according to priority
+  setState(listCardNode, getMainState(compoundStates));
 });
