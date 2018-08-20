@@ -36,30 +36,32 @@ chrome.storage.sync.get('classList', function (result) {
   }
 });
 
+var States = ['canceled-tdl', 'done-tdl', 'for-later-tdl', 'waiting-for-tdl', 'in-progress-tdl']; // in order of priority
+var Fields = ['Canceled', 'Done', 'For Later', 'Waiting For', 'Started'];
+
 function getStateFromBadgeText(node) {
-  switch (node.innerText) {
-    case 'Canceled':
-      return 'canceled-tdl';
-    case 'Done':
-      return 'done-tdl';
-    case 'Started':
-      return 'in-progress-tdl';
-    case undefined:
-      return undefined;
-    default:
-      var toks = node.innerText.match(/^(\d+)\/(\d+)$/);
-      if (toks && toks.length > 2) {
-        var numDone = toks[1];
-        var numTodo = toks[2];
-        if (numDone === numTodo)
-          return 'done-tdl';
-        else if (numDone > 0)
-          return 'in-progress-tdl';
-        else
-          return 'not-started-tdl';
-      }
-      return undefined;
+  if (!node)
+    return undefined;
+
+  // Using custom fields
+  for (var iState in Fields) {
+    if (node.innerText === Fields[iState])
+      return States[iState];
   }
+
+  // Using checklist
+  var toks = node.innerText.match(/^(\d+)\/(\d+)$/);
+  if (toks && toks.length > 2) {
+    var numDone = toks[1];
+    var numTodo = toks[2];
+    if (numDone === numTodo)
+      return 'done-tdl';
+    else if (numDone > 0)
+      return 'in-progress-tdl';
+    else
+      return 'not-started-tdl';
+  }
+  return undefined;
 }
 
 function getStateFromTitle(node) {
@@ -71,8 +73,6 @@ function getStateFromTitle(node) {
   }
   return undefined;
 }
-
-var States = ['canceled-tdl', 'done-tdl', 'for-later-tdl', 'waiting-for-tdl', 'in-progress-tdl']; // in order of priority
 
 function getMainState(compoundStates) {
   for (var st of States) {
