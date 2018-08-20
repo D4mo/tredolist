@@ -11,6 +11,10 @@
     background-color: #fa6f65;
 }
 
+#board .list-card.for-later-tdl {
+    background-color: #ffffff40;
+}
+
 #board .list-card.waiting-for-tdl {
     background-color: #ffa700;
 }

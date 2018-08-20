@@ -63,12 +63,16 @@ function getStateFromBadgeText(node) {
 }
 
 function getStateFromTitle(node) {
-  if (node && node.innerText && node.innerText.match(/\<.*\>/) !== null)
-    return 'waiting-for-tdl';
+  if (node && node.innerText) {
+    if (node.innerText.match(/^\(.*\)$/) !== null)
+      return 'for-later-tdl';
+    if (node.innerText.match(/\<.*\>/) !== null)
+      return 'waiting-for-tdl';
+  }
   return undefined;
 }
 
-var States = ['canceled-tdl', 'done-tdl', 'waiting-for-tdl', 'in-progress-tdl']; // in order of priority
+var States = ['canceled-tdl', 'done-tdl', 'for-later-tdl', 'waiting-for-tdl', 'in-progress-tdl']; // in order of priority
 
 function getMainState(compoundStates) {
   for (var st of States) {
