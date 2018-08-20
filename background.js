@@ -17,8 +17,8 @@ chrome.pageAction.onClicked.addListener(function (tab) {
   chrome.tabs.executeScript(null, {file: 'toggle-layout.js'});
 });
 
-chrome.runtime.onInstalled.addListener(function (details) {
+/*chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason ==  "update" && parseFloat(details.previousVersion) < 3) {
     chrome.tabs.create({'url': chrome.extension.getURL('changelog/changelog.html')});
   }
-});
+});*/
