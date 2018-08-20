@@ -19,6 +19,14 @@ function catchNodeByClass(className, callback) {
   }
 }
 
+function getParent(node, selector) {
+  for (var p = node && node.parentElement; p; p = p.parentElement) {
+    if (p.matches(selector))
+      return p;
+  }
+  return null;
+}
+
 // Main logic
 
 var cssFile = chrome.extension.getURL('css/layout.css'),
@@ -89,7 +97,7 @@ function setState(card, state) {
   }
 }
 
-catchNodeByClass('list-card', function(listCardNode) {
+function triggerColor(listCardNode) {
   // Look at badges
   var badgeTextNodes = listCardNode.querySelectorAll('.badge-text');
   var compoundStates = Array.from(badgeTextNodes).map(function(badgeTextNode) {
@@ -101,4 +109,16 @@ catchNodeByClass('list-card', function(listCardNode) {
 
   // Resolve according to priority
   setState(listCardNode, getMainState(compoundStates));
+}
+
+catchNodeByClass('badge', function(badgeNode) {
+  var listCardNode = getParent(badgeNode, '.list-card');
+  if (listCardNode)
+    triggerColor(listCardNode);
+});
+
+catchNodeByClass('list-card-title', function(titleNode) {
+  var listCardNode = getParent(titleNode, '.list-card');
+  if (listCardNode)
+    triggerColor(listCardNode);
 });
