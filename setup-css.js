@@ -97,7 +97,7 @@ function setState(card, state) {
   }
 }
 
-function triggerColor(listCardNode) {
+function updateColor(listCardNode) {
   // Look at badges
   var badgeTextNodes = listCardNode.querySelectorAll('.badge-text');
   var compoundStates = Array.from(badgeTextNodes).map(function(badgeTextNode) {
@@ -111,14 +111,33 @@ function triggerColor(listCardNode) {
   setState(listCardNode, getMainState(compoundStates));
 }
 
-catchNodeByClass('badge', function(badgeNode) {
-  var listCardNode = getParent(badgeNode, '.list-card');
-  if (listCardNode)
-    triggerColor(listCardNode);
-});
+catchNodeByClass('list-card', updateColor);
 
-catchNodeByClass('list-card-title', function(titleNode) {
-  var listCardNode = getParent(titleNode, '.list-card');
+// Make sure we catch late asynchronous badge changes
+var classesToObserve = [{className: 'badge', callback: function(node) {
+  var listCardNode = getParent(node, '.list-card');
   if (listCardNode)
-    triggerColor(listCardNode);
-});
+    updateColor(listCardNode);
+}}];
+
+
+var rootNode = document.getElementsByClassName('board-canvas');
+if (rootNode) {
+  rootNode = rootNode[0];
+  var callback = function(mutations) {
+    for(var mutation of mutations) {
+      switch (mutation.type) {
+        case 'childList':
+          mutation.addedNodes.forEach(function(node, iNode, nodes) {
+            classesToObserve.forEach(function(obj) {
+              if (node.classList.contains(obj.className))
+                obj.callback(node);
+            });
+          });
+        default: ;
+      }
+    }
+  };
+  var observer = new MutationObserver(callback);
+  observer.observe(rootNode, {childList: true, subtree: true});
+}
