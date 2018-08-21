@@ -98,17 +98,23 @@ function setState(card, state) {
 }
 
 function updateColor(listCardNode) {
-  // Look at badges
+  // Look at badge text
   var badgeTextNodes = listCardNode.querySelectorAll('.badge-text');
   var compoundStates = Array.from(badgeTextNodes).map(function(badgeTextNode) {
     return getStateFromBadgeText(badgeTextNode);
   });
 
   // Look at title
-  compoundStates.push(getStateFromTitle(listCardNode.querySelector('.list-card-title')));
+  var titleState = getStateFromTitle(listCardNode.querySelector('.list-card-title'));
+  if (titleState !== undefined)
+    compoundStates.push(titleState);
 
   // Resolve according to priority
   setState(listCardNode, getMainState(compoundStates));
+
+  // Set additional class if having a short or past deadline
+  var iconClockNode = listCardNode.querySelector('.badge.is-due-soon') || listCardNode.querySelector('.badge.is-due-now') || listCardNode.querySelector('.badge.is-due-past')
+  listCardNode.classList.toggle('urgent-tdl', iconClockNode !== null);
 }
 
 catchNodeByClass('list-card', updateColor);

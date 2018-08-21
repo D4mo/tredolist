@@ -23,6 +23,10 @@
     color: #fff;
 }
 
+#board .list-card.urgent-tdl .list-card-title {
+    font-weight: 700;
+}
+
 #board .list {
     background-color: #e2e4e6be
 }
