@@ -135,6 +135,8 @@ if (rootNode) {
       switch (mutation.type) {
         case 'childList':
           mutation.addedNodes.forEach(function(node, iNode, nodes) {
+            if (!node.classList)
+              return;
             classesToObserve.forEach(function(obj) {
               if (node.classList.contains(obj.className))
                 obj.callback(node);
