@@ -27,7 +27,9 @@
 #board.layout-trello-horizcards .list-wrapper {
     width: calc(100% - 20px);
 }
-#board.layout-trello-mixed .js-list-content {
+
+#board.layout-trello-horizcards .list-header {
+    max-height: 24px;
 }
 
 #board.layout-trello-horizcards .js-list-content {
