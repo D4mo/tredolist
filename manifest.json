@@ -21,11 +21,14 @@
 
   "web_accessible_resources": [
     "css/layout.css",
+    "css/theme-.css",
     "css/theme-bright.css",
+    "css/theme-pastel.css",
     "css/theme-dark.css"
   ],
   "page_action": {
-    "default_title": "Tredolist"
+    "default_title": "Tredolist",
+    "default_popup": "config.html"
   },
   "commands": {
     "_execute_page_action": {

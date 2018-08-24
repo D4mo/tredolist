@@ -12,6 +12,34 @@ function insertCss(cssFile, id) {
   }
 }
 
+function findStylesheet(token) {
+  var currentCssArray = document.querySelectorAll('link[rel=stylesheet]');
+  var i;
+  for (i=0; i<currentCssArray.length; ++i) {
+      var styleSh = currentCssArray[i];
+      if (styleSh.getAttribute('href').lastIndexOf(token) !== -1)
+          return styleSh;
+  }
+  return null;
+}
+
+function switchStylesheet(styleSh, newShortFilename) {
+  var href = styleSh.getAttribute('href');
+  var sflnPos = href.lastIndexOf('/') + 1;
+  if (sflnPos == 0)
+      return;
+  href = href.substr(0, sflnPos) + newShortFilename;
+  styleSh.setAttribute('href', href);
+}
+
+function setNewStylesheet(cssToReplace, newCss) {
+  var styleSh = findStylesheet(cssToReplace);
+  if (styleSh !== null)
+    switchStylesheet(styleSh, newCss);
+  else
+    insertCss(chrome.extension.getURL("css/"+newCss));
+}
+
 function catchNodeByClass(className, callback) {
   var nodes = document.getElementsByClassName(className);
   for (var node of nodes) {
@@ -27,20 +55,90 @@ function getParent(node, selector) {
   return null;
 }
 
+function loadSettings(boardId, defaultId=undefined) {
+  chrome.storage.sync.get([boardId], function(result) {
+      var configObj = result[boardId];
+      if (configObj) {
+          document.querySelector('#layout [value='+configObj.layout+'}').checked = true;
+          document.querySelector('#coloring [value='+configObj.coloring+'}').checked = true;
+      }
+      else if (defaultId)
+          loadSettings(defaultId);
+  });
+}
+
+function getBoardId() {
+  var matches = window.location.href.match(/.*:\/\/trello\.com\/b\/(.*)\/.*/);
+  if (! (matches && matches.length > 1))
+    return null;
+  return matches[1];
+}
+
 // Main logic
 
-var cssFile = chrome.extension.getURL('css/layout.css'),
-  board = document.getElementById('board'),
-  classVertical = 'layout-trello-vertical',
-  classMixed = 'layout-trello-mixed',
-  classHorizontalCardLayout = 'layout-trello-horizcards';
-insertCss(cssFile, 'layoutcss');
-var colorThemeCssFile = chrome.extension.getURL('css/theme-bright.css');
-insertCss(colorThemeCssFile, 'tredolist-themecss')
+var board = document.getElementById('board');
+var layouts = ['vertical', 'mixed', 'horizcards'];
 
-chrome.storage.sync.get('classList', function (result) {
-  if (result.classList) {
-    board.classList.add(result.classList);
+function setLayout(layoutName) {
+  board.classList.add('layout-trello-'+layoutName);
+  for (var layout of layouts) {
+    if (layout !== layoutName)
+      board.classList.remove('layout-trello-'+layout);
+  }
+}
+
+insertCss(chrome.extension.getURL('css/layout.css'), 'layoutcss');
+
+var configObj = {
+  layout: '',
+  coloring: ''
+};
+var hasSpecificConfig = false;
+var boardId = getBoardId();
+var defaultSettingKey = '*';
+
+function onSettingChanged(key, newConfigObj) {
+  if (key === boardId) {
+    hasSpecificConfig = true;
+    //console.log("Tredolist: loading page-specific settings for "+key);
+    //console.log(newConfigObj);
+  }
+  else if ((key !== defaultSettingKey) || hasSpecificConfig)
+    return;
+  //else
+  //  console.log("Tredolist: loading default settings");
+  
+  for (var configKey in configObj) {
+    if (newConfigObj[configKey] !== configObj[configKey]) {
+      switch (configKey) {
+        case 'layout':
+          setLayout(newConfigObj[configKey]);
+          break;
+        case 'coloring':
+          setNewStylesheet(
+            'theme-'+configObj[configKey]+'.css',
+            'theme-'+newConfigObj[configKey]+'.css');
+        break;
+      }
+      configObj[configKey] = newConfigObj[configKey];
+    }
+  }
+}
+
+// Load settings
+chrome.storage.sync.get([boardId], function(result) {
+  if (result[boardId])
+    onSettingChanged(boardId, result[boardId]);
+  else {
+    chrome.storage.sync.get([defaultSettingKey], function(resultD) {
+      if (resultD[defaultSettingKey])
+        onSettingChanged((defaultSettingKey), resultD[defaultSettingKey]);
+    });
+  }
+});
+chrome.storage.onChanged.addListener(function(changes, areaName) {
+  for (key in changes) {
+    onSettingChanged(key, changes[key].newValue);
   }
 });
 

@@ -1,0 +1,49 @@
+<html>
+<head>
+</head>
+<body style="width: 300px">
+<style>
+    .config .sectionGroup {
+        width: calc(100% - 12px);
+        display: flex;
+        justify-content: space-between;
+        border: solid 1px #82949e;
+        margin: 2px;
+        padding: 4px;
+    }
+    .config .section .header {
+        font-weight: 600;
+        margin: 1px;
+    }
+    .config .section {
+        margin: 1px;
+    }
+</style>
+<script src="config.js"></script>
+<form class="config">
+    <div class="section">
+        Settings for the board '<span id="trelloBoardName"></span>':
+    </div>
+    <div class="sectionGroup">
+        <div id="layout" class="section">
+            <div class="header">Layout</div>
+            <input type="radio" name="layout" value="horizcards"> Horizontal Lists<br/>
+            <input type="radio" name="layout" value="mixed"> Grid<br/>
+            <input type="radio" name="layout" value="vertical"> Vertical<br/>
+            <input type="radio" name="layout" value="" checked="checked"> Default Trello<br/>
+        </div>
+        <div id="coloring" class="section">
+            <div class="header">Coloring</div>
+            <input type="radio" name="coloring" value="bright"> Bright<br/>
+            <input type="radio" name="coloring" value="pastel"> Pastel<br/>
+            <input type="radio" name="coloring" value="dark"> Dark<br/>
+            <input type="radio" name="coloring" value="" checked="checked"> Default Trello<br/>
+        </div>
+    </div>
+    <div class="section">
+        <button id="setDefault">Set as Default</button>
+    </div>
+</form>
+</body>
+
+</html>

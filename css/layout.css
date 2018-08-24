@@ -24,6 +24,9 @@
     height: auto;
 }
 
+#board.layout-trello-horizcards .list-cards {
+    width: 100%;
+}
 #board.layout-trello-horizcards .list-wrapper {
     width: calc(100% - 20px);
 }

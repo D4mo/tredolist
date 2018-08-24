@@ -1,0 +1,32 @@
+
+#board .list-card.done-tdl {
+    background-color: #7BC86C!important;
+}
+
+#board .list-card.in-progress-tdl {
+    background-color: #F5DD29;
+}
+
+#board .list-card.canceled-tdl {
+    background-color: #EF7564;
+}
+
+#board .list-card.for-later-tdl {
+    background-color: #ffffff40;
+}
+
+#board .list-card.waiting-for-tdl {
+    background-color: #FFB968;
+}
+
+#board .list-card.done-tdl .list-card-title {
+    color: #fff;
+}
+
+#board .list-card.urgent-tdl .list-card-title {
+    font-weight: 700;
+}
+
+#board .list {
+    background-color: #e2e4e6be
+}
