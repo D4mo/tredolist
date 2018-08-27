@@ -208,11 +208,12 @@ function updateColor(listCardNode) {
     compoundStates.push(titleState);
 
   // Resolve according to priority
-  setState(listCardNode, getMainState(compoundStates));
+  var mainState = getMainState(compoundStates);
+  setState(listCardNode, mainState);
 
   // Set additional class if having a short or past deadline
   var iconClockNode = listCardNode.querySelector('.badge.is-due-soon') || listCardNode.querySelector('.badge.is-due-now') || listCardNode.querySelector('.badge.is-due-past')
-  listCardNode.classList.toggle('urgent-tdl', iconClockNode !== null);
+  listCardNode.classList.toggle('urgent-tdl', iconClockNode !== null && (mainState !== 'canceled-tdl'));
 }
 
 catchNodeByClass('list-card', updateColor);
