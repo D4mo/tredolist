@@ -18,6 +18,10 @@
     .config .section {
         margin: 1px;
     }
+    .config .mainBtns {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
 <script src="config.js"></script>
 <form class="config">
@@ -40,8 +44,9 @@
             <input type="radio" name="coloring" value="" checked="checked"> Default Trello<br/>
         </div>
     </div>
-    <div class="section">
+    <div class="section mainBtns">
         <button id="setDefault">Set as Default</button>
+        <button id="help">What's this?</button>
     </div>
 </form>
 </body>

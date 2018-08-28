@@ -45,8 +45,15 @@ function setupPage(tab) {
         // On "Set as Default" button clicked
         document.onclick = function(e) {
             var tgt = e ? e.target : window.event.srcElement;
-            if (tgt.nodeName.toLowerCase() === 'button' && tgt.id === 'setDefault') {
-                saveSettings('*');
+            if (tgt.nodeName.toLowerCase() === 'button') {
+                switch (tgt.id) {
+                    case 'setDefault':
+                        saveSettings('*');
+                        break;
+                    case 'help':
+                        chrome.tabs.create({url: "https://github.com/Gwened/tredolist/blob/master/README.md#tredolist"});
+                        break;
+                }
                 return;
             }
         }
