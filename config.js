@@ -19,7 +19,7 @@ function saveSettings(boardId) {
 }
 
 function setupPage(tab) {
-    var matches = tab.url.match(/.*:\/\/trello\.com\/b\/(.*)\/(.*)/);
+    var matches = tab.url.match(/^.*:\/\/trello\.com\/b\/(.*)\/(.*)/);
     if (matches && matches.length > 1) {
         var boardId = matches[1];
 
@@ -28,6 +28,9 @@ function setupPage(tab) {
 
         // Display board name
         var boardName = matches[2];
+        var sep = boardName.indexOf('?');
+        if (sep !== -1)
+            boardName = boardName.substr(0, sep);
         document.getElementById('trelloBoardName').innerHTML = boardName;
 
         // On radio item changed

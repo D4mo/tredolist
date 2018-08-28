@@ -68,7 +68,7 @@ function loadSettings(boardId, defaultId=undefined) {
 }
 
 function getBoardId() {
-  var matches = window.location.href.match(/.*:\/\/trello\.com\/b\/(.*)\/.*/);
+  var matches = window.location.href.match(/^.*:\/\/trello\.com\/b\/(.*)\/.*/);
   if (! (matches && matches.length > 1))
     return null;
   return matches[1];
