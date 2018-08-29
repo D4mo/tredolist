@@ -12,6 +12,13 @@
     flex-direction: column;
 }
 
+#board.layout-trello-vertical .list-wrapper {
+    width: inherit;
+}
+#board.layout-trello-vertical .list-card {
+    max-width: inherit ;
+}
+
 #board.layout-trello-mixed {
     flex-direction: row;
     flex-wrap: wrap;
