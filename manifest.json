@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "TredoList",
-  "description": "Manage your todolist using horizontal card layout in Trello",
-  "version": "0.1",
+  "description": "TredoList turns Trello into a convenient todolist tool, by introducing new list layouts and dynamic color themes.",
+  "version": "0.9",
   "author": "Olivier Cado",
   "icons": {
     "48": "icon48.png",
@@ -29,13 +29,5 @@
   "page_action": {
     "default_title": "Tredolist",
     "default_popup": "config.html"
-  },
-  "commands": {
-    "_execute_page_action": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+L",
-        "mac": "MacCtrl+Shift+L"
-      }
-    }
   }
 }
