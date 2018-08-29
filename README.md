@@ -8,9 +8,10 @@ TredoList turns Trello into a convenient todolist tool, by introducing:
 
 Here is how the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board looks like in bright colors:
 
-![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-board.png)
+![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-mainscreenshot.png)
 
 Forked from List Layouts for Trello.
+This extension is a companion for Trello.com boards, but the author is not affiliated to Trello or Atlassian Corp.
 
 Installation
 ------------
@@ -37,8 +38,10 @@ Tredolist introduces the following conventions that will trigger the appropriate
 - A card having \<a name\> in the title is considered **Waiting For** (blocked)
 - A card having a checked custom field named *Waiting For* is also considered Waiting For (blocked)
 - A card having a checked custom field named *Canceled* is considered **Canceled**
-- A card having a past due date in the next day or before (including past!) is considered **Urgent**.
-- A card having (a title inside parenthesis) is considered to be postponed **For Later**    
+- A card having a past due date in the next day or before (including past!) is considered **Urgent**
+- A card having (a title inside parenthesis) is considered to be postponed **For Later**
+
+![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-board.png)
 
 **How should I organize my Todo List?**
 
@@ -52,7 +55,6 @@ It's up to you, but here is my own recipe:
 - You could also set up **Labels** to tag cards for a specific perspective, for example the ones selected for a demo release. Use the filter again to see only them!
 - If you've got too many cards in a list, just archive the Done cards, or move them to a new list.
 
-
 Roadmap
 -------
 
@@ -61,9 +63,10 @@ Check out the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board 
 Contributors
 ------------
 
-* Natalie Chouinard [@sudonatalie], original author of List Layouts for Trello https://github.com/sudonatalie/layout-trello
-* Thank you [@monovertex](https://github.com/natalieperna/layout-trello/pull/7) for the (much appreciated) grid layout!
-* Thank you [@zaucy](https://github.com/natalieperna/layout-trello/pull/7) for local CSS!
-* Thank you [@ck0z](https://github.com/natalieperna/layout-trello/pull/8) for reporting breakage!
-* Thank you [@ehsankooheji](https://github.com/natalieperna/layout-trello/pull/11) for saved layout state!
-* Thank you [@spellitwithaph](https://github.com/natalieperna/layout-trello/pull/27) for the handy usage GIF!
+* Natalie Chouinard [@sudonatalie](https://github.com/sudonatalie), original author of List Layouts for Trello https://github.com/sudonatalie/layout-trello
+* Thank you [@monovertex](https://github.com/sudonatalie/layout-trello/pull/7) for the (much appreciated) grid layout!
+* Thank you [@zaucy](https://github.com/sudonatalie/layout-trello/pull/7) for local CSS!
+* Thank you [@ck0z](https://github.com/sudonatalie/layout-trello/pull/8) for reporting breakage!
+* Thank you [@ehsankooheji](https://github.com/sudonatalie/layout-trello/pull/11) for saved layout state!
+* Thank you [@spellitwithaph](https://github.com/sudonatalie/layout-trello/pull/27) for the handy usage GIF!
+
