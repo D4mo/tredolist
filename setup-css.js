@@ -80,6 +80,8 @@ var board = document.getElementById('board');
 var layouts = ['vertical', 'mixed', 'horizcards'];
 
 function setLayout(layoutName) {
+  if (!board.classList)
+    return;
   board.classList.add('layout-trello-'+layoutName);
   for (var layout of layouts) {
     if (layout !== layoutName)
@@ -190,6 +192,8 @@ function getMainState(compoundStates) {
 }
 
 function setState(card, state) {
+  if (!card.classList)
+    return;
   for (var st of States) {
     card.classList.toggle(st, (st === state));
   }
@@ -212,8 +216,9 @@ function updateColor(listCardNode) {
   setState(listCardNode, mainState);
 
   // Set additional class if having a short or past deadline
-  var iconClockNode = listCardNode.querySelector('.badge.is-due-soon') || listCardNode.querySelector('.badge.is-due-now') || listCardNode.querySelector('.badge.is-due-past')
-  listCardNode.classList.toggle('urgent-tdl', iconClockNode !== null && (mainState !== 'canceled-tdl'));
+  var iconClockNode = listCardNode.querySelector('.badge.is-due-soon') || listCardNode.querySelector('.badge.is-due-now') || listCardNode.querySelector('.badge.is-due-past');
+  if (listCardNode.classList)
+    listCardNode.classList.toggle('urgent-tdl', iconClockNode !== null && (mainState !== 'canceled-tdl'));
 }
 
 catchNodeByClass('list-card', updateColor);
