@@ -59,6 +59,11 @@ Roadmap
 
 Check out the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board to follow updates!
 
+Another tool by Olivier Cado
+----------------------------
+
+Need a multi-swimlane calendar? A timeline that represents your time continuously when you travel across multiple timezones? Try out the [Calendoo Timeline](https://app.calendoo.net/Timeline). You can even search for the [cheapest flights](https://app.calendoo.net/flights) taking off in a large area, pin your favorite picks, and compare them easily on the timeline and on a map.
+
 Contributors
 ------------
 
