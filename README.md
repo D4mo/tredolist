@@ -8,9 +8,7 @@ TredoList turns Trello into a convenient todolist tool, by introducing:
 
 Get rid of Todo / In Progress / Done lists! Now your cards get colored according to their status.
 Here is how the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board looks like in bright colors:
-
 ![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-mainscreenshot.png)
-
 Forked from List Layouts for Trello.
 This extension is a companion for Trello.com boards, but the author is not affiliated to Trello or Atlassian Corp.
 
