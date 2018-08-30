@@ -26,6 +26,10 @@
         font-size: 11px;
         margin: 8px 4px 0px 4px;
     }
+    .config .tip ul {
+        margin-top: 4px;
+        -webkit-padding-start: 16px;
+    }
 </style>
 <script src="config.js"></script>
 <form class="config">
@@ -52,8 +56,15 @@
         <button id="setDefault">Set as Default</button>
         <button id="help">What's this?</button>
     </div>
-    <div class="tip">
-        Tip: you can add the character <b>|</b> in the title of a list and have your board divided in <b>multiple swimlanes</b>. Example: "Monday | Next Week"
+    <div class="tip">Tips
+        <ul>
+            <li><b>Checklists</b> are used for <i>started</i> and <i>done</i> status</li>
+            <li><b>&lt;Name in brackets&gt;</b> means <i>waiting for</i> someone</li>
+            <li>Use <b>due dates</b> for urgent tasks</li>
+            <li><b>(Card title in parenthesis)</b> means a postponed task</li>
+            <li>Add a <b>Canceled</b> custom field for canceled tasks.<br/>Also supported for Started, Done, etc.</li>
+            <li>Start a <b>swimlane</b> with | in list title.<br/>Ex: "Monday | Next Week"</li>
+        </ul>
     </div>
 </form>
 </body>
