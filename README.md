@@ -42,6 +42,8 @@ Tredolist introduces the following conventions that will trigger the appropriate
 
 ![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-board.png)
 
+Tip: you can add the character **|** in the title of a list and have your board divided in **multiple swimlanes**. Example: "Monday | Next Week". This is inspired from Swimlanes for Trello, an extension by Jeff Yaus.
+
 **How should I organize my Todo List?**
 
 It's up to you, but here is my own recipe:

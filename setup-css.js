@@ -221,13 +221,55 @@ function updateColor(listCardNode) {
     listCardNode.classList.toggle('urgent-tdl', iconClockNode !== null && (mainState !== 'canceled-tdl'));
 }
 
+function updateSwimlanes(listWrapperNode) {
+  var titleEl = listWrapperNode.querySelector('.list-header-name');
+  if (!titleEl)
+    return;
+  var wantWrap = false;
+  var swimlaneTitle;
+  if (titleEl.value) {
+    var matches = titleEl.value.match(/^.*[\|🏊](.*)/);
+    if (matches && matches.length > 1) {
+      wantWrap = true;
+      swimlaneTitle = matches[1];
+    }
+  }
+  if (listWrapperNode.classList)
+    listWrapperNode.classList.toggle('wrapBefore-tdl', wantWrap);
+  var lineBreakEl = listWrapperNode.previousElementSibling;
+  var hasLineBreakBefore = (lineBreakEl && lineBreakEl.classList && lineBreakEl.classList.contains('line-break-tdl'));
+  if (wantWrap && !hasLineBreakBefore) {
+    // Add
+    var lineBreak = document.createElement('div');
+    lineBreak.className = 'line-break-tdl';
+    lineBreak.setAttribute('data-swimlane-title-tdl', swimlaneTitle.trim());
+    listWrapperNode.parentNode.insertBefore(lineBreak, listWrapperNode);
+  }
+  else if (!wantWrap && hasLineBreakBefore) {
+    // Remove
+    listWrapperNode.parentElement.removeChild(lineBreakEl);
+  }
+  else if (wantWrap && hasLineBreakBefore) {
+    // Modify
+    lineBreakEl.setAttribute('data-swimlane-title-tdl', swimlaneTitle);
+  }
+}
+
 catchNodeByClass('list-card', updateColor);
 
+catchNodeByClass('list-wrapper', updateSwimlanes);
+
 // Make sure we catch late asynchronous badge changes
-var classesToObserve = [{className: 'badge', callback: function(node) {
+var classesToObserve = [
+{className: 'badge', type: 'c', callback: function(node) {
   var listCardNode = getParent(node, '.list-card');
   if (listCardNode)
     updateColor(listCardNode);
+}},
+{className: 'list-header-name-assist', type: 'v', callback: function(node) {
+  var listWrapperNode = getParent(node, '.list-wrapper');
+  if (listWrapperNode)
+    updateSwimlanes(listWrapperNode);
 }}];
 
 
@@ -239,14 +281,24 @@ if (rootNode) {
       switch (mutation.type) {
         case 'childList':
           mutation.addedNodes.forEach(function(node, iNode, nodes) {
-            if (!node.classList)
-              return;
             classesToObserve.forEach(function(obj) {
-              if (node.classList.contains(obj.className))
-                obj.callback(node);
+              switch (obj.type) {
+                case 'c':
+                  if (node.classList && node.classList.contains(obj.className))
+                    obj.callback(node);
+                  break;
+                case 'v':
+                  if (node.nodeValue !== undefined && node.parentElement && node.parentElement.classList && node.parentElement.classList.contains(obj.className))
+                    obj.callback(node);
+                  break;
+              }
             });
           });
-        default: ;
+          break;
+        case 'attributes':
+          if (obj.type === 'a' && mutation.target.classList.contains(obj.className))
+            obj.callback(mutation.target);
+          break;
       }
     }
   };

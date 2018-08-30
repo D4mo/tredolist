@@ -24,6 +24,33 @@
     flex-wrap: wrap;
 }
 
+#board .line-break-tdl {
+    width: 100%;
+    height: 32px;
+    background-color: #e2e4e670;
+}
+
+#board .line-break-tdl:after {
+    content: attr(data-swimlane-title-tdl);
+    display: block;
+    position: absolute;
+    margin-left: 12px;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+#board.layout-trello-horizcards .line-break-tdl:after,
+#board.layout-trello-vertical .line-break-tdl:after  {
+    width: 100%;
+    height: 32px;
+    background-color: #e2e4e670;
+}
+
+#board.layout-trello-horizcards .list-wrapper.wrapBefore-tdl,
+#board.layout-trello-vertical .list-wrapper.wrapBefore-tdl {
+    margin-top: 32px !important;
+}
+
 #board.layout-trello-vertical .list-wrapper,
 #board.layout-trello-mixed .list-wrapper,
 #board.layout-trello-horizcards .list-wrapper {

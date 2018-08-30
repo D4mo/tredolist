@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "TredoList",
   "description": "TredoList turns Trello into a convenient todolist tool, by introducing new list layouts and dynamic color themes.",
-  "version": "0.9",
+  "version": "0.9.3",
   "author": "Olivier Cado",
   "icons": {
     "48": "icon48.png",
