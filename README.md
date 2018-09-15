@@ -15,10 +15,9 @@ This extension is a companion for Trello.com boards, but the author is not affil
 Installation
 ------------
 
-Coming soon...
-Download and install the extension from here: [Chrome Web Store - Tredolist](https://chrome.google.com/webstore/detail/tredolist/...)
+Download and install the official extension from here: [Chrome Web Store - Tredolist](https://chrome.google.com/webstore/detail/tredolist/ccdkhfdflkpacnhjcefjlhlaopfgjkab)
 
-For now, you need to install from source as unpackaged extension.
+If you want to modify the source code, you can download it from GitHub and install from source as unpackaged extension in Google Chrome's Extension manager.
 
 Usage
 -----
