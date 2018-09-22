@@ -31,7 +31,7 @@ function setupPage(tab) {
         var sep = boardName.indexOf('?');
         if (sep !== -1)
             boardName = boardName.substr(0, sep);
-        document.getElementById('trelloBoardName').innerHTML = boardName;
+        document.getElementById('trelloBoardName').textContent = boardName;
 
         // On radio item changed
         document.onchange = function(e) {

@@ -1,6 +1,11 @@
 {
   "manifest_version": 2,
   "name": "TredoList",
+  "applications": {
+    "gecko": {
+      "id": "tredolist-firefox@netismic.com"
+    }
+  },
   "description": "TredoList turns Trello into a convenient todolist tool, by introducing new list layouts and dynamic color themes.",
   "version": "0.9.4",
   "author": "Olivier Cado",
