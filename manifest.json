@@ -7,7 +7,7 @@
     }
   },
   "description": "TredoList turns Trello into a convenient todolist tool, by introducing new list layouts and dynamic color themes.",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "author": "Olivier Cado",
   "icons": {
     "48": "icon48.png",
