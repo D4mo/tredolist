@@ -1,3 +1,7 @@
+// For Edge to support for...of before Fall 2018 update
+// https://stackoverflow.com/questions/22754315/for-loop-for-htmlcollection-elements
+NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
 function getBoardId() {
   var matches = window.location.href.match(/^.*:\/\/trello\.com\/b\/(.*)\/.*/);
