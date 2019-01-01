@@ -3,8 +3,8 @@ TredoList
 =========
 
 TredoList turns Trello into a convenient todolist tool, by introducing:
-* new list layouts
-* new dynamic color themes
+* new optional list layouts
+* new optional dynamic color themes
 
 Get rid of Todo / In Progress / Done lists! Now your cards get colored according to their status.
 Here is how the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board looks like in bright colors:
@@ -15,9 +15,11 @@ This extension is a companion for Trello.com boards, but the author is not affil
 Installation
 ------------
 
-Download and install the official extension from here: [Chrome Web Store - Tredolist](https://chrome.google.com/webstore/detail/tredolist/ccdkhfdflkpacnhjcefjlhlaopfgjkab)
+Download and install the official extension from here:
+[Chrome Web Store: Tredolist](https://chrome.google.com/webstore/detail/tredolist/ccdkhfdflkpacnhjcefjlhlaopfgjkab)
+[Firefox Add-ons: TredoList](https://addons.mozilla.org/en-US/firefox/addon/tredolist/)
 
-If you want to modify the source code, you can download it from GitHub and install from source as unpackaged extension in Google Chrome's Extension manager.
+If you want to modify the source code, you can download it from GitHub and install from source as unpackaged extension in Google Chrome's or Firefox's Extension manager.
 
 Usage
 -----
