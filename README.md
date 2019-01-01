@@ -16,8 +16,8 @@ Installation
 ------------
 
 Download and install the official extension from here:
-[Chrome Web Store: Tredolist](https://chrome.google.com/webstore/detail/tredolist/ccdkhfdflkpacnhjcefjlhlaopfgjkab)
-[Firefox Add-ons: TredoList](https://addons.mozilla.org/en-US/firefox/addon/tredolist/)
+- [Chrome Web Store: Tredolist](https://chrome.google.com/webstore/detail/tredolist/ccdkhfdflkpacnhjcefjlhlaopfgjkab)
+- [Firefox Add-ons: TredoList](https://addons.mozilla.org/en-US/firefox/addon/tredolist/)
 
 If you want to modify the source code, you can download it from GitHub and install from source as unpackaged extension in Google Chrome's or Firefox's Extension manager.
 
