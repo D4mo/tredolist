@@ -157,23 +157,26 @@ if (boardId !== null) {
     if (!node)
       return undefined;
 
-    // Using custom fields
-    for (var iState in Fields) {
-      if (node.innerText === Fields[iState])
-        return States[iState];
+    if (node.innerText.indexOf("/", 1) === -1) { // optim
+      // Using custom fields
+      for (var iState in Fields) {
+        if (node.innerText === Fields[iState])
+          return States[iState];
+      }
     }
-
-    // Using checklist
-    var toks = node.innerText.match(/^(\d+)\/(\d+)$/);
-    if (toks && toks.length > 2) {
-      var numDone = toks[1];
-      var numTodo = toks[2];
-      if (numDone === numTodo)
-        return 'done-tdl';
-      else if (numDone > 0)
-        return 'in-progress-tdl';
-      else
-        return 'not-started-tdl';
+    else {
+      // Using checklist
+      var toks = node.innerText.match(/^(\d+)\/(\d+)$/);
+      if (toks && toks.length > 2) {
+        var numDone = toks[1];
+        var numTodo = toks[2];
+        if (numDone === numTodo)
+          return 'done-tdl';
+        else if (numDone > 0)
+          return 'in-progress-tdl';
+        else
+          return 'not-started-tdl';
+      }
     }
     return undefined;
   }
