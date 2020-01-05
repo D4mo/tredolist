@@ -43,7 +43,7 @@ Tredolist introduces the following conventions that will trigger the appropriate
 
 ![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-board.png)
 
-Tip: you can add the character **|** in the title of a list and have your board divided in **multiple swimlanes**. Example: "Monday | Next Week". This is inspired from Swimlanes for Trello, an extension by Jeff Yaus.
+Tip: you can add the character **|** in the title of a list and have your board divided in **multiple swimlanes**. Example: "Monday | Next Week". This is an experimental feature (see Known Bugs section below) inspired from Swimlanes for Trello, an extension by Jeff Yaus.
 
 **How should I organize my Todo List?**
 
@@ -57,8 +57,10 @@ It's up to you, but here is my own recipe:
 - You could also set up **Labels** to tag cards for a specific perspective, for example the ones selected for a demo release. Use the filter again to see only them!
 - If you've got too many cards in a list, just archive the Done cards, or move them to a new list.
 
-Roadmap
--------
+Known Bugs and Roadmap
+----------------------
+
+Currently, if you add Swimlanes to a board, moving cards after the first swimlane is buggy: the target position is often shifted by one or more cards. This is most probably due to the fact that a swmilane adds a 'div' which is taken into account by Trello to compute the target slot.
 
 Check out the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board to follow updates!
 
