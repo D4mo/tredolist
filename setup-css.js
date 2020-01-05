@@ -84,7 +84,7 @@ if (boardId !== null) {
   // Main logic
 
   var board = document.getElementById('board');
-  var layouts = ['vertical', 'mixed', 'horizcards'];
+  var layouts = ['', 'vertical', 'mixed', 'horizcards'];
 
   function setLayout(layoutName) {
     if (!board.classList)

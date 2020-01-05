@@ -1,6 +1,4 @@
-#board.layout-trello-vertical,
-#board.layout-trello-mixed,
-#board.layout-trello-horizcards {
+#board:not(.layout-trello-) {
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
@@ -24,13 +22,17 @@
     flex-wrap: wrap;
 }
 
+#board.layout-trello- .line-break-tdl {
+    display: none;
+}
+
 #board .line-break-tdl {
     width: 100%;
     height: 32px;
     background-color: #e2e4e670;
 }
 
-#board .line-break-tdl:after {
+#board:not(.layout-trello-) .line-break-tdl:after {
     content: attr(data-swimlane-title-tdl);
     display: block;
     position: absolute;
@@ -51,9 +53,7 @@
     margin-top: 32px !important;
 }
 
-#board.layout-trello-vertical .list-wrapper,
-#board.layout-trello-mixed .list-wrapper,
-#board.layout-trello-horizcards .list-wrapper {
+#board:not(.layout-trello-) .list-wrapper {
     margin: 0 0 10px 10px;
     height: auto;
 }
