@@ -2,14 +2,15 @@
 TredoList
 =========
 
-TredoList turns Trello into a convenient todolist tool, by introducing:
+TredoList turns Trello into a convenient todo list tool, by introducing:
 * new optional list layouts
 * new optional dynamic color themes
 
-Get rid of Todo / In Progress / Done lists! Now your cards get colored according to their status.
-Here is how the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board looks like in bright colors:
-![Tredolist board](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-mainscreenshot.png)
-Forked from List Layouts for Trello.
+While Trello naturally supports the *kanban* concept of Todo / In Progress / Done lists, it can do much better thanks to card checklists. You can use checklists and other card attributes to represent the status of an item. [Tredolist](https://trello.com/b/af1CpwBl/tredolist) improves this model by coloring cards based on that status, and providing alternative layouts for card grouping. Here is an example:
+![Example](https://raw.githubusercontent.com/gwened/tredolist/master/screenshots/tredolist-example.png)
+
+Read more about the concept in my blog post [7 ways of keeping track of your Todos](https://medium.com/@gwened/7-ways-of-keeping-track-of-your-todos-2b86b85ecab3).
+
 This extension is a companion for Trello.com boards, but the author is not affiliated to Trello or Atlassian Corp.
 
 Installation
@@ -64,15 +65,13 @@ Currently, if you add Swimlanes to a board, moving cards after the first swimlan
 
 Check out the [Tredolist](https://trello.com/b/af1CpwBl/tredolist) Trello board to follow updates!
 
-Another tool by Olivier Cado
-----------------------------
-
-Need a multi-swimlane calendar? A timeline that represents your time continuously when you travel across multiple timezones? Try out the [Calendoo Timeline](https://app.calendoo.net/Timeline). You can even search for the [cheapest flights](https://app.calendoo.net/flights) taking off in a large area, pin your favorite picks, and compare them easily on the timeline and on a map.
-
 Contributors
 ------------
 
-* Natalie Chouinard [@sudonatalie](https://github.com/sudonatalie), original author of List Layouts for Trello https://github.com/sudonatalie/layout-trello
+Design and code by Olivier Cado.
+
+Based on a fork from [List Layouts for Trello](https://github.com/sudonatalie/layout-trello) by Natalie Chouinard [@sudonatalie](https://github.com/sudonatalie).
+
 * Thank you [@monovertex](https://github.com/sudonatalie/layout-trello/pull/7) for the (much appreciated) grid layout!
 * Thank you [@zaucy](https://github.com/sudonatalie/layout-trello/pull/7) for local CSS!
 * Thank you [@ck0z](https://github.com/sudonatalie/layout-trello/pull/8) for reporting breakage!
